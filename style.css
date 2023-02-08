@@ -1,0 +1,14 @@
+body{
+    background: #CCFFBC;
+}
+.lead{
+    margin-bottom: 0px;
+}
+.container{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.alert-danger:empty, .alert-success:empty {
+    display: none;
+}
