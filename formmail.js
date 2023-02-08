@@ -28,25 +28,28 @@ $('#sendmail').on("click", function () {
         $("#error").text("Выберите семинар");
         return false;
     }
-    $("error").text("");
+    $("#error").text("");
     $.ajax({
         url:'sendmail.php',
         type: 'POST',
         cache: false,
         data: {'name': name, 'email': email, 'seminar': seminar},
         dataType: 'html',
-        beforeSend: function() {
-            $("$sendmail").prop("disabled", true);
+        beforeSend:
+            function() {
+            $("#sendmail").prop("disabled", true);
         },
-        success: function(data) {
+        success: [
+            function(data) {
             if(!data){
                 alert("Ошибка");
             }else {
                 $("#form").trigger("reset");
                 $("#success").text("Ваша заявка успешно отправлена и находится в обработке. Ожидайте email с подтверждением бронирования.");
             }
-            $("$sendmail").prop("disabled", false);
+            $("#sendmail").prop("disabled", false);
         }
+        ]
     });
-    $("success").text("");
+    $("#success").text("");
 });
